@@ -1,24 +1,45 @@
-import React from 'react';
-
-// TODO: Import any API functions you need from '../../api/client'
-// Example: import { get, post } from '../../api/client';
+import React, { useEffect, useState } from "react";
 
 function QuestionComponent() {
-  // TODO: Define state variables needed for your question set
-  
+  const [tasks, setTasks] = useState([]);
 
-  // TODO: Implement data fetching inside a useEffect hook
-  
+  useEffect(() => {
+    // Dummy data (simulate API)
+    const data = [
+      {
+        _id: "1",
+        title: "Complete Assignment",
+        description: "React lab work",
+        status: "pending"
+      }
+    ];
 
-  // TODO: Implement any event handlers required by your question set
-  
+    setTasks(data);
+  }, []);
 
   return (
     <div>
-      {/* TODO: Replace this placeholder with your question set UI */}
-      <p>QuestionComponent placeholder — implement your assigned question set here.</p>
+      <h2>Task List</h2>
 
-      {/* TODO: Render fetched data or form elements as required */}
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {tasks.map(task => (
+            <tr key={task._id}>
+              <td>{task.title}</td>
+              <td>{task.description}</td>
+              <td>{task.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
